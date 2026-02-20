@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Skills{% endblock %}
+
+{% block content %}
+<section class="min-h-screen bg-gray-50 p-8">
+    <div class="max-w-6xl mx-auto">
+        <!-- Page Title -->
+        <h2 class="text-5xl font-bold text-cyan-600 mb-12 text-center animate-fade-in">My Skills</h2>
+
+        <!-- Skill navigation buttons -->
+        <div class="flex flex-wrap justify-center gap-4 mb-12">
+            <button onclick="scrollToSkill('python')" class="px-5 py-2 bg-cyan-600 text-white rounded-lg hover:bg-cyan-700 transition shadow-md">Python</button>
+            <button onclick="scrollToSkill('django')" class="px-5 py-2 bg-cyan-600 text-white rounded-lg hover:bg-cyan-700 transition shadow-md">Django</button>
+            <button onclick="scrollToSkill('drf')" class="px-5 py-2 bg-cyan-600 text-white rounded-lg hover:bg-cyan-700 transition shadow-md">DRF</button>
+            <button onclick="scrollToSkill('sql')" class="px-5 py-2 bg-cyan-600 text-white rounded-lg hover:bg-cyan-700 transition shadow-md">SQL</button>
+            <button onclick="scrollToSkill('frontend')" class="px-5 py-2 bg-cyan-600 text-white rounded-lg hover:bg-cyan-700 transition shadow-md">Frontend</button>
+        </div>
+
+        <!-- Skills Sections -->
+        <div class="space-y-14">
+            <!-- Python -->
+            <div id="python" class="animate-slide-up p-8 bg-white rounded-2xl shadow-xl border-l-4 border-cyan-500">
+                <h3 class="text-3xl font-bold text-gray-900 mb-4">Python</h3>
+                <p class="text-gray-700 mb-6">
+                    I have strong expertise in Python programming. I build backend systems, automate tasks, and create robust web applications with clean, maintainable code.
+                </p>
+                <div class="w-full bg-gray-200 rounded-full h-6 overflow-hidden">
+                    <div class="bg-cyan-500 h-6 rounded-full animate-skill-fill" style="width:0%;"></div>
+                </div>
+            </div>
+
+            <!-- Django -->
+            <div id="django" class="animate-slide-up p-8 bg-white rounded-2xl shadow-xl border-l-4 border-cyan-500">
+                <h3 class="text-3xl font-bold text-gray-900 mb-4">Django</h3>
+                <p class="text-gray-700 mb-6">
+                    I develop full-stack applications using Django. I design models, views, and templates with dynamic frontend integrations.
+                </p>
+                <div class="w-full bg-gray-200 rounded-full h-6 overflow-hidden">
+                    <div class="bg-cyan-500 h-6 rounded-full animate-skill-fill" style="width:0%;"></div>
+                </div>
+            </div>
+
+            <!-- Django REST Framework -->
+            <div id="drf" class="animate-slide-up p-8 bg-white rounded-2xl shadow-xl border-l-4 border-cyan-500">
+                <h3 class="text-3xl font-bold text-gray-900 mb-4">Django REST Framework</h3>
+                <p class="text-gray-700 mb-6">
+                    I create robust REST APIs with DRF, handle authentication, and integrate APIs with frontend frameworks.
+                </p>
+                <div class="w-full bg-gray-200 rounded-full h-6 overflow-hidden">
+                    <div class="bg-cyan-500 h-6 rounded-full animate-skill-fill" style="width:0%;"></div>
+                </div>
+            </div>
+
+            <!-- SQL -->
+            <div id="sql" class="animate-slide-up p-8 bg-white rounded-2xl shadow-xl border-l-4 border-cyan-500">
+                <h3 class="text-3xl font-bold text-gray-900 mb-4">SQL / Databases</h3>
+                <p class="text-gray-700 mb-6">
+                    Experienced in designing relational databases, writing complex queries, and optimizing database performance.
+                </p>
+                <div class="w-full bg-gray-200 rounded-full h-6 overflow-hidden">
+                    <div class="bg-cyan-500 h-6 rounded-full animate-skill-fill" style="width:0%;"></div>
+                </div>
+            </div>
+
+            <!-- Frontend -->
+            <div id="frontend" class="animate-slide-up p-8 bg-white rounded-2xl shadow-xl border-l-4 border-cyan-500">
+                <h3 class="text-3xl font-bold text-gray-900 mb-4">Frontend Development</h3>
+                <p class="text-gray-700 mb-6">
+                    Skilled in HTML, CSS, JavaScript, Tailwind CSS, and modern frontend frameworks. I create responsive, animated, and interactive web interfaces.
+                </p>
+                <div class="w-full bg-gray-200 rounded-full h-6 overflow-hidden">
+                    <div class="bg-cyan-500 h-6 rounded-full animate-skill-fill" style="width:0%;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    function scrollToSkill(skillId) {
+        const element = document.getElementById(skillId);
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+        // Animate skill bars when scrolled
+        const skillFill = element.querySelector('.animate-skill-fill');
+        const width = skillFill.getAttribute('data-width') || '80%';
+        skillFill.style.width = width;
+    }
+
+    // Animate all skill bars on page load
+    window.addEventListener('load', () => {
+        document.querySelectorAll('.animate-skill-fill').forEach((bar, index) => {
+            const widths = ['90%', '85%', '80%', '75%', '80%'];
+            bar.style.width = widths[index];
+        });
+    });
+</script>
+
+<style>
+/* Skill bar animation */
+.animate-skill-fill {
+    transition: width 1.5s ease-in-out;
+}
+
+/* Page fade and slide */
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+    animation: fadeIn 1s ease forwards;
+}
+
+@keyframes slideUp {
+    0% { opacity: 0; transform: translateY(50px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-slide-up {
+    animation: slideUp 0.8s ease forwards;
+}
+</style>
+{% endblock %}

@@ -1,0 +1,14 @@
+<header class="fixed top-0 left-0 w-full bg-gray-800 shadow-lg z-50">
+  <nav class="max-w-6xl mx-auto flex justify-between items-center py-4 px-6">
+    <a href="/" class="text-2xl font-bold text-cyan-400">MyPortfolio</a>
+    <ul class="hidden md:flex space-x-8 text-lg">
+      <li><a href="{% url 'home page' %}" class="hover:text-cyan-400 transition">Home</a></li>
+      <li><a href="{% url 'about page' %}" class="hover:text-cyan-400 transition">About</a></li>
+      <li><a href="{% url 'skills page' %}" class="hover:text-cyan-400 transition">Skills</a></li>
+      <li><a href="{% url 'project page' %}" class="hover:text-cyan-400 transition">Projects</a></li>
+      <li><a href="{% url 'contact page' %}" class="hover:text-cyan-400 transition">Contact</a></li>
+      <li><a href="{% url 'resume' %}" class="hover:text-cyan-400 transition">Resume</a></li>
+    </ul>
+    <button class="md:hidden text-2xl" id="menu-btn"><i class="fas fa-bars"></i></button>
+  </nav>
+</header>
