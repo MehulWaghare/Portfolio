@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # Your app (nested path)
-    'my_website.portfolio',
+    'portfolio',
 ]
 
 
