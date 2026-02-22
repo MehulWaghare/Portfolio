@@ -37,7 +37,7 @@ def contact(request):
                 subject=f"New Contact Form Message from {name}",
                 message=full_message,
                 from_email=email,
-                recipient_list=['your_email@gmail.com'],  # Replace with your email
+                recipient_list=['wagharemehul1112@gmail.com'],  # Replace with your email
                 fail_silently=False,
             )
             messages.success(request, 'Your message has been sent successfully!')
