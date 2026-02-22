@@ -17,13 +17,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY SETTINGS
 # ======================
 
-# Use environment variable for secret key
 SECRET_KEY = os.getenv("SECRET_KEY")
 
-# Turn off debug in production
 DEBUG = False
 
-# Allow Render domain
 ALLOWED_HOSTS = [
     'portfolio-8mej.onrender.com',
     'localhost',
@@ -43,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # Your app (nested path)
     'portfolio',
 ]
 
@@ -54,6 +50,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # ✅ IMPORTANT
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -126,11 +123,21 @@ USE_TZ = True
 
 
 # ======================
-# STATIC FILES (IMPORTANT FOR RENDER)
+# STATIC FILES (FIXED)
 # ======================
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'  # ✅ FIXED (leading slash)
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
+# ======================
+# MEDIA FILES (FOR RESUME)
+# ======================
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 # ======================
